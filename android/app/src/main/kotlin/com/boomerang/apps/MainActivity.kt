@@ -1,4 +1,4 @@
-package com.example.boomerang
+package com.boomerang.apps
 
 import io.flutter.embedding.android.FlutterActivity
 

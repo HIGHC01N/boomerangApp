@@ -22,16 +22,23 @@ dependencies:
 
   intl: ^0.17.0
 
-  geolocator: ^8.1.1
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  change_app_package_name: ^1.1.0
+  flutter_launcher_icons:
+
 
 flutter:
   uses-material-design: true
 
   assets:
     - asset/img/
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "asset/icon.png"
