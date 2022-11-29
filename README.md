@@ -1,16 +1,21 @@
 # boomerang
 
-A new Flutter project.
+Boomerang은 식품들의 탄소량을 알려주어 환경에 대한 인식을 개선하고자 만들어 졌습니다.
+Boomerang에는 다음과 같은 페이지가 있습니다.
 
-## Getting Started
+-냉장고 현황 페이지
+여러분의 냉장고에 있는 식품들의 목록을 제공합니다.
+이 페이지에서 각 식품들의 탄소량 등 다양한 정보를 제공해줍니다.
+또한 각 식품들의 개수를 조정할 수 있습니다.
 
-This project is a starting point for a Flutter application.
+- 날씨 페이지
+다양한 날씨들의 정보를 제공합니다.
+여러분의 기기가 위치 권한을 허용하여 위치 정보를 제공해준다면,
+여러분의 기기가 현재 위치한 곳의 시간대별 날씨, 주일 날씨 등의 정보를 제공해줄 수 있습니다.
 
-A few resources to get you started if this is your first Flutter project:
+- 뉴스 페이지
+환경에 관련된 뉴스를 선정하여 제공해주는 페이지입니다.
+해당 페이지는 아직 개발 중이며 곧 업데이트될 것 입니다.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Boomerang 웹 사이트에 방문하고 싶다면, 다음 링크를 이용해 주세요.
+https://bssmboomerang.vercel.app/
