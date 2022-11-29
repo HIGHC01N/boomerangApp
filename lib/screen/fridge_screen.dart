@@ -201,7 +201,6 @@ class _FridgeScreenState extends State<FridgeScreen> {
             '냉장고가 텅 비어 있어요..',
             style: GoogleFonts.inter(
               textStyle: const TextStyle(
-                color: Color(0xffcccccc),
                 fontSize: 13.0,
                 fontWeight: FontWeight.w800,
               ),
@@ -221,7 +220,6 @@ class _FridgeScreenState extends State<FridgeScreen> {
         '냉장고가 텅 비어 있어요..',
         style: GoogleFonts.inter(
           textStyle: const TextStyle(
-            color: Color(0xffcccccc),
             fontSize: 13.0,
             fontWeight: FontWeight.w800,
           ),
@@ -308,42 +306,54 @@ class _FridgeScreenState extends State<FridgeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: const Icon(Icons.arrow_back_ios)),
-                const Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 65.0,
-                  ),
-                  child: Text(
-                    'Bommerang List',
-                    style: TextStyle(
-                      color: Color(0xff232f59),
-                      fontWeight: FontWeight.w300,
-                      fontSize: 27.0,
-                    ),
-                  ),
-                ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xffd5daf8),
+                Color(0xffb1dfff),
               ],
             ),
-            FoodInfoTitle(),
-            isLoading
-                ?
-            loading()
-                :
-            isEmpty
-                ?
-            empty()
-                :
-            foodInfos(),
-            total(),
-          ],
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: const Icon(Icons.arrow_back_ios)),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 65.0,
+                    ),
+                    child: Text(
+                      'Bommerang List',
+                      style: TextStyle(
+                        color: Color(0xff232f59),
+                        fontWeight: FontWeight.w300,
+                        fontSize: 27.0,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              FoodInfoTitle(),
+              isLoading
+                  ?
+              loading()
+                  :
+              isEmpty
+                  ?
+              empty()
+                  :
+              foodInfos(),
+              total(),
+            ],
+          ),
         ),
       ),
     );
@@ -367,51 +377,58 @@ class FoodInfoTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Bar(),
-        Row(
-          children: [
-            Expanded(
-              child: Text(
-                '제품사진',
-                textAlign: TextAlign.center,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: EdgeInsets.symmetric(
+        vertical: 15.0,
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  '제품사진',
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                '품명',
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Text(
+                  '품명',
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                '탄소량',
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Text(
+                  '탄소량',
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                '칼로리',
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Text(
+                  '칼로리',
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                '나무',
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Text(
+                  '나무',
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                '개수',
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Text(
+                  '개수',
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-          ],
-        ),
-        Bar(),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

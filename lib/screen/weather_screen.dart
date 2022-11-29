@@ -136,7 +136,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
         currentWeather['weatherState'] = parseData['current']['weather'][0]['description'];
         city = parseData['timezone'].split('/')[1];
 
-        for(int i = 0; i < 7; i++) {
+        for(int i = 0; i < 24; i++) {
           DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(parseData['hourly'][i]['dt'] * 1000).add(Duration(hours: 9));
           String today = DateFormat('EEEE').format(dateTime);
           String time = '';
