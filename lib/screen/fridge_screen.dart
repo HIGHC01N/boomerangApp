@@ -239,7 +239,19 @@ class _FridgeScreenState extends State<FridgeScreen> {
             calorie: foodInfoList[index].calorie.toString(),
             tree: foodInfoList[index].tree,
             amount: foodInfoList[index].amount,
-            add: () async {
+            add: () {
+              http.post(
+                Uri.parse('https://boomerang-server.herokuapp.com/updateAmount'),
+                headers: {
+                  'content-type': 'application/json',
+                },
+                body: jsonEncode({
+                  'machineId': '5c:cf:7f:d1:a1:47:',
+                  'amount': foodInfoList[index].amount,
+                  'objectId': foodInfoList[index].objectId,
+                }),
+              );
+
               setState(() {
                 foodInfoList[index].carbon += originalFoodInfoList[index].carbon;
                 foodInfoList[index].calorie += originalFoodInfoList[index].calorie;
@@ -251,20 +263,8 @@ class _FridgeScreenState extends State<FridgeScreen> {
                 totalFoodInfo['tree'] = totalFoodInfo['tree'] + originalFoodInfoList[index].tree;
                 totalFoodInfo['aggregate']++;
               });
-
-              final response = await http.post(
-                Uri.parse('https://boomerang-server.herokuapp.com/updateAmount'),
-                headers: {
-                  'content-type': 'application/json',
-                },
-                body: jsonEncode({
-                  'machineId': '5c:cf:7f:d1:a1:47:',
-                  'amount': foodInfoList[index].amount,
-                  'objectId': foodInfoList[index].objectId,
-                }),
-              );;
             },
-            minus: () async {
+            minus: () {
               setState(() {
                 foodInfoList[index].carbon -= originalFoodInfoList[index].carbon;
                 foodInfoList[index].calorie -= originalFoodInfoList[index].calorie;
@@ -276,21 +276,22 @@ class _FridgeScreenState extends State<FridgeScreen> {
                 totalFoodInfo['tree'] = totalFoodInfo['tree'] - originalFoodInfoList[index].tree;
                 totalFoodInfo['aggregate']--;
 
+                http.post(
+                  Uri.parse('https://boomerang-server.herokuapp.com/updateAmount'),
+                  headers: {'Content-Type': 'application/json'},
+                  body: jsonEncode({
+                    'machineId': '5c:cf:7f:d1:a1:47:',
+                    'amount': foodInfoList[index].amount,
+                    'objectId': foodInfoList[index].objectId,
+                  }),
+                );
+
                 if(foodInfoList[index].amount == 0) {
                   foodInfoList.removeAt(index);
                   originalFoodInfoList.removeAt(index);
                   if(foodInfoList.isEmpty) isEmpty = true;
                 }
               });
-              final response = await http.post(
-                Uri.parse('https://boomerang-server.herokuapp.com/updateAmount'),
-                headers: {'Content-Type': 'application/json'},
-                body: jsonEncode({
-                  'machineId': '5c:cf:7f:d1:a1:47:',
-                  'amount': foodInfoList[index].amount,
-                  'objectId': foodInfoList[index].objectId,
-                }),
-              );
             },
           );
         },
@@ -328,14 +329,15 @@ class _FridgeScreenState extends State<FridgeScreen> {
                       icon: const Icon(Icons.arrow_back_ios)),
                   const Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 65.0,
+                      horizontal: 35.0,
+                      vertical: 10.0,
                     ),
                     child: Text(
-                      'Bommerang List',
+                      'Boomerang List',
                       style: TextStyle(
                         color: Color(0xff232f59),
-                        fontWeight: FontWeight.w300,
-                        fontSize: 27.0,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 35.0,
                       ),
                     ),
                   ),
