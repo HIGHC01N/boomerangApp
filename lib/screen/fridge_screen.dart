@@ -318,6 +318,9 @@ class _FridgeScreenState extends State<FridgeScreen> {
               ],
             ),
           ),
+          padding: EdgeInsets.symmetric(
+            horizontal: 10.0,
+          ),
           child: Column(
             children: [
               Row(
@@ -367,10 +370,7 @@ class Bar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromARGB(255, 240, 240, 240),
-      height: 2.5,
-    );
+    return SizedBox(height: 2.5);
   }
 }
 
@@ -386,6 +386,10 @@ class FoodInfoTitle extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(
         vertical: 15.0,
+        horizontal: 5.0,
+      ),
+      margin: EdgeInsets.symmetric(
+        vertical: 5.0,
       ),
       child: Column(
         children: [
@@ -460,7 +464,15 @@ class Food extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: EdgeInsets.symmetric(
+        vertical: 10.0,
+        horizontal: 5.0,
+      ),
+      height: 70.0,
       child: Row(
         children: [
           Expanded(child: Image.network(imageUrl)),
@@ -499,13 +511,18 @@ class Food extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                Image.asset('asset/img/tree.png'),
+                Image.asset(
+                  'asset/img/tree.png',
+                  width: 30.0,
+                  height: 30.0,
+                ),
                 Text(tree.toStringAsFixed(2)),
               ],
             ),
           ),
           Expanded(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
